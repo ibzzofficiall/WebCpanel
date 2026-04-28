@@ -598,7 +598,5 @@ app.get('/api', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Panel API ready at :${PORT}`);
-});
+// Ganti app.listen dengan export default
+export default app;
