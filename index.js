@@ -55,10 +55,15 @@ async function sendTelegramMessage(chatId, message) {
 
 // Authentication endpoint
 app.post('/api/login', (req, res) => {
+app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
 
-  if (username === 'kii' && password === '1') {
-    res.json({ success: true, user: { username: 'kii', role: 'admin' } });
+  // Daftar user yang diizinkan
+  const isUser1 = (username === 'admin1' && password === 'pass123');
+  const isUser2 = (username === 'ibzz_official' && password === 'rahasia');
+
+  if (isUser1 || isUser2) {
+    res.json({ success: true, user: { username: username, role: 'admin' } });
   } else {
     res.status(401).json({ error: 'Invalid credentials' });
   }
